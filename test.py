@@ -1,20 +1,20 @@
 import requests
+import random
+from bs4 import BeautifulSoup
 
 
-# 构造headers
-headers ={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36'}
-# 测试ip的URL
-url_for_test ='http://httpbin.org/ip'
-url_ip ="https://www.kuaidaili.com/free/inha/2"
-proxy = proxies ={
-        'http': '150.109.32.166:80',  #'http://'+
-        }
-for num_page in range(1,5):
-    print(num_page)
-try:
-    response = requests.get(url_ip, headers=headers, proxies=proxy, timeout=5)
-    if response.status_code == 200:
-        print('此ip未失效:',proxy)
-except Exception as e:
-    print('此ip已失效:', proxy)
-    print('已经从Redis移除')
+page = 1
+url = f'https://ip.jiangxianli.com/?page={page}'
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36',
+}
+response = requests.get(url, headers=headers)
+print(response.text)
+soup = BeautifulSoup(response.text, 'lxml')
+soup = soup.find('table', attrs={'class': 'layui-table'})
+for item in soup.find('tbody').find_all('tr'):
+    if len(item.find_all('td')) != 11: continue
+    ip = item.find_all('td')[0].text.strip()
+    port = item.find_all('td')[1].text.strip()
+    proxy_type = item.find_all('td')[3].text.strip()
+    print(ip)
