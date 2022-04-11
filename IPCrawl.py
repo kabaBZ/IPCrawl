@@ -62,14 +62,12 @@ def ip_test(url_for_test,ip_info):
         try:
             response = requests.get(url_for_test,headers=headers,proxies=proxies,timeout=5)
             if response.status_code ==200:
-                print('测试通过:')
-                print(proxies)
+                print('测试通过:',proxies)
                 x = write_to_Redis(ip_for_test)
                 if x == 1:
                     n += 1
         except Exception as e:
-            print('测试失败：')
-            print(proxies)
+            print('测试失败:',proxies)
             continue
     print('本次向数据库更新数目:',n)
 def write_to_Redis(proxies):
