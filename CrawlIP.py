@@ -1,13 +1,5 @@
 from IPCrawl import IPCrawl
-import requests
-import random
 import time
-import json
-from lxml import etree
-from redis import Redis
-from bs4 import BeautifulSoup
-import copy
-import sched
 import schedule
 # def timer():
 #     #初始化模块
@@ -28,25 +20,26 @@ def crawl():
     c = IPCrawl.JiangxianliIP()
     d = IPCrawl.Ip3366()
     e = IPCrawl.YqieProxy()
-    f = IPCrawl.ZdayeProxy()
+    # f = IPCrawl.ZdayeProxy()
     g = IPCrawl.TaiyangProxy()
     h = IPCrawl.Ip66Proxy()
     i = IPCrawl.SeofangfaProxy()
     print('kuaidaili')
-    a.proxy_to_redis()
+    a.proxy_to_redis('127.0.0.1',3333,'9v,-PHaJ6mEJ*u>Y>rrM')
     print('fatezero')
-    b.proxy_to_redis()
+    b.proxy_to_redis('127.0.0.1',3333,'9v,-PHaJ6mEJ*u>Y>rrM')
     print('jiangxianli')
-    c.proxy_to_redis()
+    c.proxy_to_redis('127.0.0.1',3333,'9v,-PHaJ6mEJ*u>Y>rrM')
     print('ip3366')
-    d.proxy_to_redis()
+    d.proxy_to_redis('127.0.0.1',3333,'9v,-PHaJ6mEJ*u>Y>rrM')
     print('yqie')
-    e.proxy_to_redis()
+    e.proxy_to_redis('127.0.0.1',3333,'9v,-PHaJ6mEJ*u>Y>rrM')
     print('taiyang')
     # f.proxy_to_redis()
-    g.proxy_to_redis()
+    g.proxy_to_redis('127.0.0.1',3333,'9v,-PHaJ6mEJ*u>Y>rrM')
     print('ip66')
-    h.proxy_to_redis()
+    h.proxy_to_redis('127.0.0.1',3333,'9v,-PHaJ6mEJ*u>Y>rrM')
     print('seofangfa')
-    i.proxy_to_redis()
+    i.proxy_to_redis('127.0.0.1',3333,'9v,-PHaJ6mEJ*u>Y>rrM')
 crawl()
+timer()
